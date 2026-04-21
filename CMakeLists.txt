@@ -8,7 +8,6 @@ add_executable(code main.cpp)
 
 # Optimize for speed and enable reasonable warnings
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    target_compile_options(code PRIVATE -O2 -pipe -static -s -Wall -Wextra -Wconversion -Wshadow)
-    # static may fail for some libs; OJ will just run the produced binary
+    # Avoid static linking for broader compatibility on OJ runners
+    target_compile_options(code PRIVATE -O2 -pipe -Wall -Wextra -Wconversion -Wshadow)
 endif()
-
